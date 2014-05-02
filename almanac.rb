@@ -3,6 +3,7 @@ require "json"
 
 class WundergroundSearch
   def initialize(api_key, base_url)
+    #config
     @api_key = api_key
     @base_url = base_url
   end
@@ -12,7 +13,17 @@ class WundergroundSearch
     http_response = Faraday.get(almanac_search_url(city, state))
 
     # parsing
-    parsed_response = JSON.parse(http_response.body)
+    parse_response(http_response.body)
+  end
+
+  private
+
+  def almanac_search_url(city, state)
+    "#{@base_url}/#{@api_key}/almanac/q/#{state}/#{city}.json"
+  end
+
+  def parse_response(response_body)
+    parsed_response = JSON.parse(response_body)
     average_low_temp = parsed_response["almanac"]["temp_low"]["normal"]["F"]
     record_low_temp = parsed_response["almanac"]["temp_low"]["record"]["F"]
     average_high_temp = parsed_response["almanac"]["temp_high"]["normal"]["F"]
@@ -25,16 +36,9 @@ class WundergroundSearch
       record_high_temp: record_high_temp
     }
   end
-
-  private
-
-  def almanac_search_url(city, state)
-    "#{@base_url}/#{@api_key}/almanac/q/#{state}/#{city}.json"
-  end
 end
 
 wunderground_client = WundergroundSearch.new("aece37e7e7a48995", "http://api.wunderground.com/api")
-
 temperature_data = wunderground_client.almanac_search("Denver", "CO")
 
 # printing
