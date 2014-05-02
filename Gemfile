@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "faraday", "~> 0.9.0"
 gem "json", "~> 1.8.1"
-gem "pp"
+gem "webmock", "~> 1.17.4"
 
 group :test do
   gem "rspec", "~> 2.14.1"
