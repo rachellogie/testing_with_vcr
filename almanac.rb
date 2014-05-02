@@ -18,14 +18,21 @@ class WundergroundSearch
     average_high_temp = parsed_response["almanac"]["temp_high"]["normal"]["F"]
     record_high_temp = parsed_response["almanac"]["temp_high"]["record"]["F"]
 
+    temperature_data = {
+      average_low_temp: average_low_temp,
+      record_low_temp: record_low_temp,
+      average_high_temp: average_high_temp,
+      record_high_temp: record_high_temp
+    }
+
     # printing
     puts "Results for Denver:"
 
-    puts "Average Low temp for today: #{average_low_temp} F"
-    puts "Record Low temp for today: #{record_low_temp} F"
+    puts "Average Low temp for today: #{temperature_data[:average_low_temp]} F"
+    puts "Record Low temp for today: #{temperature_data[:record_low_temp]} F"
 
-    puts "Average High temp for today: #{average_high_temp} F"
-    puts "Record High temp for today: #{record_high_temp} F"
+    puts "Average High temp for today: #{temperature_data[:average_high_temp]} F"
+    puts "Record High temp for today: #{temperature_data[:record_high_temp]} F"
   end
 
   private
