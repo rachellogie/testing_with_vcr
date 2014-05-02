@@ -1,15 +1,21 @@
 require "faraday"
 require "json"
 
-# configuration
-api_key = "aece37e7e7a48995"
-base_url = "http://api.wunderground.com/api/#{api_key}"
+class WundergroundSearch
+  def initialize(api_key, base_url)
+    @api_key = api_key
+    @base_url = base_url
+  end
 
-# which method
-almanac_search = "/almanac/q/CO/Denver.json"
+  def almanac_search_url
+    "#{@base_url}/#{@api_key}/almanac/q/CO/Denver.json"
+  end
+end
+
+wunderground_client = WundergroundSearch.new("aece37e7e7a48995","http://api.wunderground.com/api")
 
 # HTTP stuff
-http_response = Faraday.get(base_url + almanac_search)
+http_response = Faraday.get(wunderground_client.almanac_search_url)
 
 # parsing
 parsed_response = JSON.parse(http_response.body)
