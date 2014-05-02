@@ -7,21 +7,21 @@ class WundergroundSearch
     @base_url = base_url
   end
 
-  def almanac_search
-    Faraday.get(almanac_search_url)
+  def almanac_search(city, state)
+    Faraday.get(almanac_search_url(city, state))
   end
 
   private
 
-  def almanac_search_url
-    "#{@base_url}/#{@api_key}/almanac/q/CO/Denver.json"
+  def almanac_search_url(city, state)
+    "#{@base_url}/#{@api_key}/almanac/q/#{state}/#{city}.json"
   end
 end
 
-wunderground_client = WundergroundSearch.new("aece37e7e7a48995","http://api.wunderground.com/api")
+wunderground_client = WundergroundSearch.new("aece37e7e7a48995", "http://api.wunderground.com/api")
 
 # HTTP stuff
-http_response = wunderground_client.almanac_search
+http_response = wunderground_client.almanac_search("Denver", "CO")
 
 # parsing
 parsed_response = JSON.parse(http_response.body)
