@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.wunderground.com/api/aece37e7e7a48995/almanac/q/CO/Denver.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache/1.3.42 (Unix) PHP/5.3.2
+      X-Creationtime:
+      - '0.049'
+      Last-Modified:
+      - Tue, 06 May 2014 17:18:21 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Tue, 06 May 2014 17:22:54 GMT
+      Cache-Control:
+      - max-age=0, no-cache
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 06 May 2014 17:22:54 GMT
+      Content-Length:
+      - '469'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n
+        \ \"features\": {\n  \"almanac\": 1\n  }\n\t}\n\t\t,\n\t\"almanac\": {\n\t\t\"airport_code\":
+        \"KAPA\",\n\t\t\"temp_high\": {\n\t\t\"normal\": {\n\t\t\"F\": \"64\",\n\t\t\"C\":
+        \"17\"\n\t\t}\n\t\t,\n\t\t\"record\": {\n\t\t\"F\": \"82\",\n\t\t\"C\": \"27\"\n\t\t},\n\t\t\"recordyear\":
+        \"2004\"\n\t\t},\n\t\t\"temp_low\": {\n\t\t\"normal\": {\n\t\t\"F\": \"37\",\n\t\t\"C\":
+        \"2\"\n\t\t}\n\t\t,\n\t\t\"record\": {\n\t\t\"F\": \"25\",\n\t\t\"C\": \"-3\"\n\t\t},\n\t\t\"recordyear\":
+        \"1999\"\n\t\t}\n\t}\n}\n"
+    http_version: 
+  recorded_at: Tue, 06 May 2014 17:22:54 GMT
+recorded_with: VCR 2.9.0
